@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion Ecole 221</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  
+</head>
+<body class="bg-rose-50 font-poppins">
+    <div class="flex flex-nowrap justify-center items-center  h-full">
+        <div class="w-[12%] bg-white h-screen py-3">
+            <aside class="flex flex-wrap gap-5 items-center justify-center">
+                <div class="flex gap-2 items-center w-[90%] ">
+                    <span><span class="text-2xl">🎓</span></span>
+                    <span class="font-bold text-red-900 text-lg">Ecole 221</span>
+                </div>
+                <a href="#" class=" nav-item active flex items-center gap-3 w-[95%] h-[40px] rounded-lg px-3 text-sm font-medium transition-all hover:bg-red-900 hover:text-white" data-page="inscriptions">
+                <span class="nav-icon text-lg flex-shrink-0">📋</span>
+                <span class="nav-label text-lg">Inscriptions</span>
+                </a>
+            </aside>
+        </div>
+        <div class="flex justify-center   flex-wrap   h-[40rem]">
+            <main class="w-[96%] flex flex-wrap ">
+                <div class="shadow-sm rounded-lg h-[70px] px-6 py-4 bg-white flex items-center flex items-center justify-between w-[100%]">
+                    
+                    <input type="text"
+                    id="rechercher" 
+                    class="border border-rose-500 rounded-xl h-[30px] w-[30%]  outline-none focus:border-red-800 px-4 py-2 text-sm "
+                    placeholder="🔍 rechercher..">
+                    
+                </div>
+                <div class=" flex items-center justify-between w-full h-[50px] ">
+                    <h1 class="text-red-900 font-bold text-2xl">LISTE DES INSCRIPTIONS</h1>
+                    <div class="flex gap-6 h-[40px] items-center justify-center">
+                        <button class="border border-red-900 font-medium rounded-xl w-[120px] h-[90%] hover:bg-red-900 hover:text-white"
+                            id="btnAjouter">
+                            <i class="fa-solid fa-box-archive px-2"></i>
+                            Archives
+                        </button>
+                        <button class="border border-red-900 font-medium rounded-xl w-[120px] h-[90%] bg-red-900 text-white hover:border-red-200 hover:bg-red-100 hover:text-red-900"
+                            id="btnAllArchives"> 
+                            <i class="fa-solid fa-plus text-lg px-1"></i>
+                        Ajouter
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white w-[100%] rounded-xl overflow-hidden">
+                    <table class="w-full  text-sm">
+                        <thead class="font-bold h-[40px] bg-red-900 text-white">
+                            <tr>
+                                <td class="px-3 py-3 text-left">nom</td>
+                                <td class="px-3 py-3 text-left">prenom</td>
+                                <td class="px-3 py-3 text-left">Email</td>
+                                <td class="px-3 py-3 text-left">Telephone</td>
+                                <td class="px-3 py-3 text-left">Formation</td>
+                                <td class="px-3 py-3 text-left">Date</td>
+                                <td class="px-3 py-3 text-center">Actions</td>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm" >
+                            <tr class="border-b border-gray-100 hover:bg-rose-50 transition-colors' h-[50px] ">
+                                <td class="text-lg px-3 py-3 text-left">Diouf</td>
+                                <td class="text-lg px-3 py-3 text-left">Aminata</td>
+                                <td class="text-lg px-3 py-3 text-left text-gray-500">ami@gmail.com</td>
+                                <td class="text-lg px-3 py-3 text-left">770000000</td>
+                                <td class="text-sm px-3 py-3 text-left">
+                                    <span class="px-4 py-1 rounded-2xl bg-red-100 text-red-800 ">GEL-L1</span>
+                                </td>
+                                <td class="text-lg px-3 py-3 text-left text-gray-500">20/12/2026</td>
+                                <td class="text-center px-3 py-3 ">
+                                        <div class="flex gap-2 items-center justify-center ">
+                                            <button
+                                                id="btnModifier"
+                                                class="w-8 h-8 rounded-lg bg-orange-50 border border-orange-300 text-orange-500 hover:bg-orange-500 hover:text-white transition-colors">
+                                            ✏️
+                                            </button>
+                                            <button
+                                                id="btnArchiver"
+                                                class="w-8 h-8 rounded-lg bg-orange-50 border border-orange-300 text-orange-500 hover:bg-orange-500 hover:text-white transition-colors">
+                                            🗃️
+                                            </button> 
+                                        </div>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-rose-50 transition-colors' h-[50px] ">
+                                <td class="text-lg px-3 py-3 text-left">Diouf</td>
+                                <td class="text-lg px-3 py-3 text-left">Aminata</td>
+                                <td class="text-lg px-3 py-3 text-left text-gray-500">ami@gmail.com</td>
+                                <td class="text-lg px-3 py-3 text-left">770000000</td>
+                                <td class="text-sm px-3 py-3 text-left">
+                                    <span class="px-4 py-1 rounded-2xl bg-red-100 text-red-800 ">GEL-L1</span>
+                                </td>
+                                <td class="text-lg px-3 py-3 text-left text-gray-500">20/12/2026</td>
+                                <td class="text-center px-3 py-3 ">
+                                        <div class="flex gap-2 items-center justify-center ">
+                                            <button
+                                                id="btnModifier"
+                                                class="w-8 h-8 rounded-lg bg-orange-50 border border-orange-300 text-orange-500 hover:bg-orange-500 hover:text-white transition-colors">
+                                            ✏️
+                                            </button>
+                                            <button
+                                                id="btnArchiver"
+                                                class="w-8 h-8 rounded-lg bg-orange-50 border border-orange-300 text-orange-500 hover:bg-orange-500 hover:text-white transition-colors">
+                                            🗃️
+                                            </button> 
+                                        </div>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-rose-50 transition-colors' h-[50px] ">
+                                <td class="text-lg px-3 py-3 text-left">Diouf</td>
+                                <td class="text-lg px-3 py-3 text-left">Aminata</td>
+                                <td class="text-lg px-3 py-3 text-left text-gray-500">ami@gmail.com</td>
+                                <td class="text-lg px-3 py-3 text-left">770000000</td>
+                                <td class="text-sm px-3 py-3 text-left">
+                                    <span class="px-4 py-1 rounded-2xl bg-red-100 text-red-800 ">GEL-L1</span>
+                                </td>
+                                <td class="text-lg px-3 py-3 text-left text-gray-500">20/12/2026</td>
+                                <td class="text-center px-3 py-3 ">
+                                        <div class="flex gap-2 items-center justify-center ">
+                                            <button
+                                                id="btnModifier"
+                                                class="w-8 h-8 rounded-lg bg-orange-50 border border-orange-300 text-orange-500 hover:bg-orange-500 hover:text-white transition-colors">
+                                            ✏️
+                                            </button>
+                                            <button
+                                                id="btnArchiver"
+                                                class="w-8 h-8 rounded-lg bg-orange-50 border border-orange-300 text-orange-500 hover:bg-orange-500 hover:text-white transition-colors">
+                                            🗃️
+                                            </button> 
+                                        </div>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-rose-50 transition-colors' h-[50px] ">
+                                <td class="text-lg px-3 py-3 text-left">Diouf</td>
+                                <td class="text-lg px-3 py-3 text-left">Aminata</td>
+                                <td class="text-lg px-3 py-3 text-left text-gray-500">ami@gmail.com</td>
+                                <td class="text-lg px-3 py-3 text-left">770000000</td>
+                                <td class="text-sm px-3 py-3 text-left">
+                                    <span class="px-4 py-1 rounded-2xl bg-red-100 text-red-800 ">GEL-L1</span>
+                                </td>
+                                <td class="text-lg px-3 py-3 text-left text-gray-500">20/12/2026</td>
+                                <td class="text-center px-3 py-3 ">
+                                        <div class="flex gap-2 items-center justify-center ">
+                                            <button
+                                                id="btnModifier"
+                                                class="w-8 h-8 rounded-lg bg-orange-50 border border-orange-300 text-orange-500 hover:bg-orange-500 hover:text-white transition-colors">
+                                            ✏️
+                                            </button>
+                                            <button
+                                                id="btnArchiver"
+                                                class="w-8 h-8 rounded-lg bg-orange-50 border border-orange-300 text-orange-500 hover:bg-orange-500 hover:text-white transition-colors">
+                                            🗃️
+                                            </button> 
+                                        </div>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-rose-50 transition-colors' h-[50px] ">
+                                <td class="text-lg px-3 py-3 text-left">Diouf</td>
+                                <td class="text-lg px-3 py-3 text-left">Aminata</td>
+                                <td class="text-lg px-3 py-3 text-left text-gray-500">ami@gmail.com</td>
+                                <td class="text-lg px-3 py-3 text-left">770000000</td>
+                                <td class="text-sm px-3 py-3 text-left">
+                                    <span class="px-4 py-1 rounded-2xl bg-red-100 text-red-800 ">GEL-L1</span>
+                                </td>
+                                <td class="text-lg px-3 py-3 text-left text-gray-500">20/12/2026</td>
+                                <td class="text-center px-3 py-3 ">
+                                        <div class="flex gap-2 items-center justify-center ">
+                                            <button
+                                                id="btnModifier"
+                                                class="w-8 h-8 rounded-lg bg-orange-50 border border-orange-300 text-orange-500 hover:bg-orange-500 hover:text-white transition-colors">
+                                            ✏️
+                                            </button>
+                                            <button
+                                                id="btnArchiver"
+                                                class="w-8 h-8 rounded-lg bg-orange-50 border border-orange-300 text-orange-500 hover:bg-orange-500 hover:text-white transition-colors">
+                                            🗃️
+                                            </button> 
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+
+        </div>
+    </div>
+
+  
+</body>
+</html>
+        <div id="modalAjouter" class=" hidden border border-black  flex flex-wrap justify-center items-center gap-4 p-2 fixed inset-0 bg-black/40 z-50  ">
+            <div class="bg-white rounded-2xl shadow-xl w-[440px] max-w-[95vw] p-7 flex flex-wrap justify-center items-center gap-3">
+            <div class="flex items-center justify-between w-[90%]">
+                <h2 class="font-bold text-lg text-red-900">✏️ Ajouter une inscription</h2>
+                <button id="fermerAjouter" class="text-gray-400 hover:text-gray-600 text-xl font-bold">✕</button>
+            </div>
+
+            <div class="w-[90%]">
+                <label class="block text-sm font-medium mb-1 px-2">Nom *</label>
+                <input id="nom" type="text"
+                class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-red-800"
+                placeholder="Nom de famille"/>
+            </div>
+            <div class="w-[90%]">
+                <label class="block text-sm font-medium mb-1 px-2">Prenom *</label>
+                <input id="prenom" type="text"
+                class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-red-800"
+                placeholder="prenom de famille"/>
+            </div>
+            <div class="w-[90%]">
+                <label class="block text-sm font-medium mb-1 px-2">Email *</label>
+                <input id="email" type="text"
+                class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-red-800"
+                placeholder="mettez votre email"/>
+            </div>
+            <div class="w-[90%]">
+                <label class="block text-sm font-medium mb-1 px-2">Telephone *</label>
+                <input id="telephone" type="number"
+                class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-red-800"
+                placeholder="mettez votre numéro de telephone"/>
+            </div>
+            <div class="w-[90%]">
+                <label class="block text-sm font-medium mb-1 px-2">Date *</label>
+                <input id="date" type="date"
+                class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-red-800"
+                />
+            </div>
+            <div class="w-[90%]">
+                <label class="block text-sm font-medium mb-1">Formation *</label>
+                <select id="aj_formation"
+                class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-red-800 bg-white">
+                <option value="">-- Choisir --</option>
+                <!-- TODO: charger depuis l'API -->
+                <option value="devWeb-L1">Développement web - L1</option>
+                <option value="devWeb-L2">Développement web - L2</option>
+                <option value="devWeb-L3">Développement web - L3</option>
+                <option value="GL-L1">Génie logiciel - L1</option>
+                <option value="GL-L2">Génie logiciel - L2</option>
+                <option value="data-L1">Développement data - L1</option>
+                </select>
+            </div>
+             <div class="w-[90%]">
+                <button type="submit"
+                    class="w-full bg-red-800 text-white rounded-lg py-2.5 font-semibold text-sm hover:bg-red-900 transition-colors">
+                    Créer l'inscription
+                </button>
+            </div>
+            </div>
+        </div>
+
+<!-- ════════════════════════════════════════════
+     MODAL — CONFIRMATION
+════════════════════════════════════════════ -->
+<div id="modalConfirm" class="hidden fixed inset-0 bg-black/40 z-[60] flex items-center justify-center">
+  <div class="bg-white rounded-2xl shadow-xl w-[340px] max-w-[95vw] p-8 text-center">
+
+    <p id="confirmTexte" class="text-base font-semibold text-red-800 mb-8 leading-relaxed">
+      <!-- texte injecté par JS -->
+    </p>
+
+    <div class="flex justify-center gap-6">
+      <!-- Oui -->
+      <button id="confirmOui"
+        class="w-12 h-12 rounded-xl bg-green-50 border-2 border-green-500 text-green-600 text-xl hover:bg-green-500 hover:text-white transition-colors">
+        ✔
+      </button>
+      <!-- Non -->
+      <button id="confirmNon"
+        class="w-12 h-12 rounded-xl bg-red-50 border-2 border-red-400 text-red-500 text-xl hover:bg-red-500 hover:text-white transition-colors">
+        ✕
+      </button>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- ════════════════════════════════════════════
+     DRAWER — ARCHIVES
+     Positionné fixed à droite, caché par défaut
+════════════════════════════════════════════ -->
+
+<!-- Fond sombre derrière le drawer -->
+<div id="drawerFond" class="hidden fixed inset-0 bg-black/40 z-40"></div>
+
+<!-- Le drawer -->
+<div id="drawer" class="hidden fixed top-0 right-0 h-full w-[420px] max-w-full bg-white z-50 shadow-2xl flex flex-col">
+
+  <!-- En-tête drawer -->
+  <div class="flex items-center justify-between px-6 py-4 border-b bg-rose-50">
+    <h2 class="font-bold text-red-900 text-lg">📦 Archives</h2>
+    <button id="fermerDrawer" class="text-gray-400 hover:text-gray-600 text-xl font-bold">✕</button>
+  </div>
+
+  <!-- Barre d'action (cachée tant que rien n'est coché) -->
+  <div id="barreActions" class="hidden items-center justify-between px-6 py-3 bg-red-50 border-b border-red-100">
+    <span id="nbSelectionnes" class="text-sm font-medium text-red-800"></span>
+    <button id="btnDesarchiver"
+      class="bg-red-800 text-white text-sm px-4 py-2 rounded-lg font-semibold hover:bg-red-900 transition-colors">
+      🔄 Désarchiver
+    </button>
+  </div>
+
+  <!-- Liste des archives -->
+  <div class="flex-1 overflow-y-auto px-6 py-4" id="listeArchives">
+    <!-- items générés par JS -->
+  </div>
+
+  <!-- Message vide -->
+  <div id="archivesVides" class="hidden text-center py-12 text-gray-400 px-6">
+    <p class="text-3xl mb-2">📭</p>
+    <p class="text-sm">Aucune archive.</p>
+  </div>
+
+</div>
