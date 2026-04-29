@@ -1,28 +1,24 @@
 import { getData, sauvegardeData} from "../store/taskStore.js"
 import { formatDate } from "../utils/dateFormatter.js"
-import { listeInscription } from "../dom/element.js"
+import { btnAjouter, listeInscription,btnFormulaireAjout } from "../dom/element.js"
 // const allIns = getData()
-    let idModifier = null
-    export function verifMail(email){
-        const allIns = getData()
-       const verif = allIns.find(u => u.email === email)
-       if(!verif && idModifier === null) return 0 // si c'est l'ajout
-        if(idModifier != null && verif.email === email)return 0 //lors d'une modification et l'utilisateur garde son mail
-        return 1
+   
+   export function verifMail(email, idModifier) {
+    const allIns = getData()
+    const verif = allIns.find(u => u.email === email)
+    if (!verif) return 0                                         // email n'existe pas → OK
+    if (idModifier !== null && verif.id === idModifier) return 0 // c'est la même personne → OK
+    return 1                                                     // doublon → erreur
+    }
 
-       
-    }
-   
-    export function verifTelephone(telephone){
+    export function verifTelephone(telephone, idModifier) {
         const allIns = getData()
-       const verif = allIns.find(u => u.telephone === telephone)
-        if(!verif && idModifier === null)return 0
-        if(idModifier != null && verif.telephone === telephone)return 0
+        const verif = allIns.find(u => u.telephone === telephone)
+        if (!verif) return 0
+        if (idModifier !== null && verif.id === idModifier) return 0
         return 1
-       
     }
-   
-    export function verifData(nom,prenom,email,telephone,selectformation){
+export function verifData(nom,prenom,email,telephone,selectformation,idModifier){
     let errors = {}
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -45,7 +41,7 @@ import { listeInscription } from "../dom/element.js"
          errors.email = "Email invalide"
     }
     //verification de mail unique
-    const verifEmail = verifMail(email)
+    const verifEmail = verifMail(email,idModifier)
     if(verifEmail === 1){
         errors.email = "L'email doit être unique"
     }
@@ -55,7 +51,7 @@ import { listeInscription } from "../dom/element.js"
         errors.telephone = "Numéro sénégalais ou gambien invalide"
     }
     //telephone unique
-    const verifTel = verifTelephone(telephone)
+    const verifTel = verifTelephone(telephone,idModifier)
     if(verifTel === 1){
         errors.telephone = "Le numéro de téléphone doit être unique"
     }
@@ -139,13 +135,13 @@ export function afficheOneIns(inscript){
                                 <td class="text-center px-3 py-3 ">
                                         <div class="flex gap-2 items-center justify-center ">
                                             <button
-                                                data-id=${inscript.id}
+                                                data-id="${inscript.id}"
                                                 id="btnModifier"
                                                 class="w-8 h-8 rounded-lg bg-orange-50 border border-orange-300 text-orange-500 hover:bg-orange-500 hover:text-white transition-colors">
                                             ✏️
                                             </button>
                                             <button
-                                                data-id=${inscript.id}
+                                                data-id="${inscript.id}"
                                                 id="btnArchiver"
                                                 class="w-8 h-8 rounded-lg bg-orange-50 border border-orange-300 text-orange-500 hover:bg-orange-500 hover:text-white transition-colors">
                                             🗃️
@@ -161,4 +157,34 @@ export function afficheAllIns(){
     allIns.forEach(ins =>{
         afficheOneIns(ins)
     })
+}
+
+export function rechargerFormulaire(id){
+    const allIns = getData()
+    const oneIns = allIns.find(ins => ins.id === id)
+    if(!oneIns){
+        return
+    }
+   nom.value = oneIns.nom
+   prenom.value = oneIns.prenom
+   email.value = oneIns.email
+   telephone.value = oneIns.telephone
+   selectFormation.value = oneIns.formation
+   btnFormulaireAjout.textContent = "modifier"
+
+}
+
+export function modifUser(id,prenomValue,nomValue,emailValue,telephoneValue,selectFormationValue){
+    const allIns = getData()
+    const index = allIns .findIndex(ins => ins.id === id)
+   if(index !== -1){
+    allIns[index].prenom = prenomValue
+    allIns[index].nom = nomValue
+    allIns[index].email = emailValue
+    allIns[index].telephone = telephoneValue
+    allIns[index].formation = selectFormationValue
+    allIns[index].date = formatDate(Date.now())
+    sauvegardeData(allIns)
+
+   } 
 }
