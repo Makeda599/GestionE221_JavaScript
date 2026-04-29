@@ -2,3 +2,12 @@
     font-family: 'Poppins', sans-serif;
 } */
  
+    .toast {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .toast.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
