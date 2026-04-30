@@ -32,7 +32,12 @@ let idModifier = null
  })
  
  btnFermerAjout.addEventListener("click",function(){
-    modalAjout.classList.add("hidden")
+    
+   modalAjout.classList.add("hidden")
+    idModifier = null
+    formAjout.reset()
+    resetErrors() 
+    btnFormulaireAjout.textContent = "Créer l'inscription"
  })
 
 listeInscription.addEventListener("click",function(event){
@@ -40,6 +45,7 @@ listeInscription.addEventListener("click",function(event){
   const btnArchi = event.target.closest("#btnArchiver")
    if(btnModif){
       idModifier = parseInt(btnModif.dataset.id)
+      resetErrors() 
       modalAjout.classList.remove('hidden')
       rechargerFormulaire(idModifier)
    }
@@ -92,9 +98,10 @@ listeInscription.addEventListener("click",function(event){
          idModifier = null
       }
     
-      listeInscription.innerHTML = ""  // ← vider
-      afficheAllIns()                  // ← reremplir
+      listeInscription.innerHTML = ""  
+      afficheAllIns()                  
       formAjout.reset()
+      resetErrors() 
       modalAjout.classList.add('hidden')
 })
 btnAllArchives.addEventListener("click",function(){
@@ -134,12 +141,12 @@ btnDesarchiver.addEventListener("click", function() {
 
     afficherToast(`${cochees.length} inscription(s) désarchivée(s)`, 'succes')
     
-    // Rafraîchir les deux listes
+    
     afficheAllArchive()
     listeInscription.innerHTML = ""
     afficheAllIns()
     
-    // Cacher la barre d'actions
+    
     barreActions.classList.add("hidden")
     barreActions.classList.remove("flex")
 })
