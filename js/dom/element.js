@@ -26,6 +26,7 @@ export const barreActions = document.getElementById("barreActions")
 export const nbSelectionnes = document.getElementById("nbSelectionnes")
 export const btnDesarchiver = document.getElementById("btnDesarchiver")
 export const archivesVides = document.getElementById("archivesVides")
+export const rechercher = document.getElementById("rechercher")
 
 
 

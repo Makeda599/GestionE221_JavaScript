@@ -15,13 +15,14 @@ import {
     listeArchives,
     barreActions,
    nbSelectionnes,
-   btnDesarchiver
+   btnDesarchiver,
+   rechercher 
   
  } from "./dom/element.js"
 // import { btnAjouter } from "./dom/element.js"
 import { getData ,sauvegardeData} from "./store/taskStore.js"
 import { verifMail,verifTelephone,verifData,resetErrors,afficherErreurs,saisiInscription,ajoutInscription,afficheOneIns,afficheAllIns,rechargerFormulaire, modifInscript, archiveInscr,  afficheOneArchive,
-    afficheAllArchive,deArchiveInscr } from "./services/taskService.js"
+    afficheAllArchive,deArchiveInscr,afficheRecherche } from "./services/taskService.js"
 import { afficherToast } from "./ui/messageRenderer.js"
 
 let idModifier = null
@@ -141,5 +142,25 @@ btnDesarchiver.addEventListener("click", function() {
     // Cacher la barre d'actions
     barreActions.classList.add("hidden")
     barreActions.classList.remove("flex")
+})
+rechercher .addEventListener("input",function(){
+   let tab = afficheRecherche()
+   listeInscription.innerHTML =""
+
+   // console.log(tab)
+   if (tab.length === 0) {
+        listeInscription.innerHTML = `
+            <tr>
+                <td colspan="7" class="text-center py-5 text-gray-400">
+                    Aucun résultat trouvé
+                </td>
+            </tr>`
+        return
+    }
+   tab.forEach(t => {
+      if(t.statue === true){
+         afficheOneIns(t)
+      }
+   })
 })
  afficheAllIns()  
