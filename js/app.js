@@ -29,10 +29,16 @@ let idModifier = null
 
  btnAjouter.addEventListener("click",function(){
     modalAjout.classList.remove('hidden')
+    resetErrors()        
+    formAjout.reset()      
+    idModifier = null
  })
  
  btnFermerAjout.addEventListener("click",function(){
     modalAjout.classList.add("hidden")
+    formAjout.reset()      
+    resetErrors()        
+    idModifier = null     
  })
 
 listeInscription.addEventListener("click",function(event){
@@ -41,6 +47,7 @@ listeInscription.addEventListener("click",function(event){
    if(btnModif){
       idModifier = parseInt(btnModif.dataset.id)
       modalAjout.classList.remove('hidden')
+      resetErrors()             
       rechargerFormulaire(idModifier)
    }
    if(btnArchi){
