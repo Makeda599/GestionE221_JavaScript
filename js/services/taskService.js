@@ -1,6 +1,6 @@
 import { getData, sauvegardeData} from "../store/taskStore.js"
 import { formatDate } from "../utils/dateFormatter.js"
-import { btnAjouter, listeInscription,btnFormulaireAjout } from "../dom/element.js"
+import { btnAjouter, listeInscription,btnFormulaireAjout ,listeArchives} from "../dom/element.js"
 // const allIns = getData()
    
    export function verifMail(email, idModifier) {
@@ -155,7 +155,9 @@ export function afficheOneIns(inscript){
 export function afficheAllIns(){
     const allIns = getData()
     allIns.forEach(ins =>{
-        afficheOneIns(ins)
+        if(ins.statue === true){
+            afficheOneIns(ins)
+        }
     })
 }
 
@@ -174,7 +176,7 @@ export function rechargerFormulaire(id){
 
 }
 
-export function modifUser(id,prenomValue,nomValue,emailValue,telephoneValue,selectFormationValue){
+export function modifInscript(id,prenomValue,nomValue,emailValue,telephoneValue,selectFormationValue){
     const allIns = getData()
     const index = allIns .findIndex(ins => ins.id === id)
    if(index !== -1){
@@ -187,4 +189,52 @@ export function modifUser(id,prenomValue,nomValue,emailValue,telephoneValue,sele
     sauvegardeData(allIns)
 
    } 
+}
+export function archiveInscr(id){
+    const allIns = getData()
+    const archi = allIns.find(i => i.id === id)
+    archi.statue = false
+    sauvegardeData(allIns)
+}
+export function deArchiveInscr(id){
+    const allIns = getData()
+    const archi = allIns.find(i => i.id === id)
+    archi.statue = true
+    sauvegardeData(allIns)
+}
+export function afficheOneArchive(ins){
+    const item = document.createElement('div');
+    item.className = 'flex items-center gap-4 bg-rose-50 border border-red-100 rounded-xl px-4 py-3 mb-3';
+
+    item.innerHTML = `
+      <!-- Checkbox -->
+      <input type="checkbox" class="ma-checkbox case-archive" data-id="${ins.id}" />
+
+      <!-- Infos -->
+      <div class="flex-1">
+        <p class="font-semibold text-sm text-red-900">${ins.nom} ${ins.prenom}</p>
+        <p class="text-xs text-gray-500">${ins.email}</p>
+        <span class="text-xs bg-red-100 text-red-800 px-2 py-0.5 rounded-full font-medium mt-1 inline-block">
+          ${ins.formation}
+        </span>
+      </div>
+
+      <!-- Date -->
+      <span class="text-xs text-gray-400">${ins.date}</span>
+    `;
+
+    listeArchives.appendChild(item);
+
+}
+export function afficheAllArchive(){
+    listeArchives.innerHTML = ""
+    const allIns = getData()
+    const archi = allIns.filter(i => i.statue === false)
+   
+    if (archi.length === 0) {
+        archivesVides.classList.remove("hidden")
+    } else {
+        archivesVides.classList.add("hidden")
+        archi.forEach(i => afficheOneArchive(i))
+    }
 }
