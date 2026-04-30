@@ -1,6 +1,6 @@
 import { getData, sauvegardeData} from "../store/taskStore.js"
 import { formatDate } from "../utils/dateFormatter.js"
-import { btnAjouter, listeInscription,btnFormulaireAjout ,listeArchives} from "../dom/element.js"
+import { btnAjouter, listeInscription,btnFormulaireAjout ,listeArchives,rechercher} from "../dom/element.js"
 // const allIns = getData()
    
    export function verifMail(email, idModifier) {
@@ -237,4 +237,18 @@ export function afficheAllArchive(){
         archivesVides.classList.add("hidden")
         archi.forEach(i => afficheOneArchive(i))
     }
+}
+
+export function afficheRecherche(){
+    const allIns = getData()
+    const serachValue = rechercher.value.toLowerCase()
+    const result = allIns.filter(i => i.nom.toLowerCase().includes(serachValue) ||
+                    i.prenom .toLowerCase().includes(serachValue) ||
+                    i.email .toLowerCase().includes(serachValue) ||
+                    i.telephone .toLowerCase().includes(serachValue) ||
+                    i.date .toLowerCase().includes(serachValue) ||
+                    i.formation .toLowerCase().includes(serachValue)
+                )
+    return result
+
 }

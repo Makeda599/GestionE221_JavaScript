@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion Ecole 221</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body class="bg-rose-50 font-poppins">
+
+    <div class="flex h-screen overflow-hidden">
+
+        <!-- ═══ SIDEBAR FIXE ═══ -->
+        <aside class="w-[200px] min-w-[200px] bg-white h-screen fixed top-0 left-0 z-30 flex flex-col gap-5 py-4 px-3 shadow-sm">
+            <div class="flex gap-2 items-center px-2">
+                <span class="text-2xl">🎓</span>
+                <span class="font-bold text-red-900 text-lg">Ecole 221</span>
+            </div>
+            <a href="#" class="nav-item active flex items-center gap-3 w-full h-[40px] rounded-lg px-3 text-sm font-medium transition-all hover:bg-red-900 hover:text-white" data-page="inscriptions">
+                <span class="text-lg">📋</span>
+                <span>Inscriptions</span>
+            </a>
+        </aside>
+
+        <!-- ═══ CONTENU PRINCIPAL ═══ -->
+        <div class="ml-[200px] flex flex-col w-full h-screen overflow-hidden">
+
+            <!-- ── TOPBAR FIXE (recherche + boutons) ── -->
+            <div class="sticky top-0 z-20 bg-white shadow-sm px-6 py-3 flex items-center justify-between w-full">
+                <input
+                    type="text"
+                    id="rechercher"
+                    class="border border-rose-500 rounded-xl h-[36px] w-[30%] outline-none focus:border-red-800 px-4 py-2 text-sm"
+                    placeholder="🔍 rechercher.."/>
+
+                <div class="flex items-center gap-3">
+                    <h1 class="text-red-900 font-bold text-xl">LISTE DES INSCRIPTIONS</h1>
+                    <button class="border border-red-900 font-medium rounded-xl px-4 h-[36px] hover:bg-red-900 hover:text-white text-sm"
+                        id="btnAllArchives">
+                        <i class="fa-solid fa-box-archive px-1"></i> Archives
+                    </button>
+                    <button class="border border-red-900 font-medium rounded-xl px-4 h-[36px] bg-red-900 text-white hover:bg-red-100 hover:text-red-900 text-sm"
+                        id="btnAjouter">
+                        <i class="fa-solid fa-plus px-1"></i> Ajouter
+                    </button>
+                </div>
+            </div>
+
+            <!-- ── TABLEAU SCROLLABLE ── -->
+            <div class="flex-1 overflow-y-auto px-6 py-4">
+                <div class="bg-white w-full rounded-xl overflow-hidden">
+                    <table class="w-full text-sm">
+                        <thead class="font-bold h-[40px] bg-red-900 text-white sticky top-0 z-10">
+                            <tr>
+                                <td class="px-3 py-3 text-left">Nom</td>
+                                <td class="px-3 py-3 text-left">Prénom</td>
+                                <td class="px-3 py-3 text-left">Email</td>
+                                <td class="px-3 py-3 text-left">Téléphone</td>
+                                <td class="px-3 py-3 text-left">Formation</td>
+                                <td class="px-3 py-3 text-left">Date</td>
+                                <td class="px-3 py-3 text-center">Actions</td>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm" id="listeInscription"></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ══ Le reste de tes modals/toasts/drawer restent identiques ══ -->
+    <!-- ... colle ici ton code pour modalAjouter, modalConfirm, drawer, zoneToast ... -->
+
+    <script type="module" src="./js/app.js"></script>
+</body>
+</html>
