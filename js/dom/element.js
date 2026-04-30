@@ -14,3 +14,19 @@ export const selectFormation = document.getElementById("selectFormation")
 export const zoneToast = document.getElementById("zoneToast")
 export const btnModifier = document.getElementById("btnModifie")
 export const btnFormulaireAjout=document.getElementById("btnFormulaireAjout")
+export const modalConfirm = document.getElementById("modalConfirm")
+export const messageConfirm = document.getElementById("confirmTexte")
+export const confirmOui = document.getElementById("confirmOui")
+export const confirmNon = document.getElementById("confirmNon")
+export const drawerFond = document.getElementById("drawerFond")
+export const drawer = document.getElementById("drawer")
+export const fermerDrawer = document.getElementById("fermerDrawer")
+export const listeArchives = document.getElementById("listeArchives")
+export const barreActions = document.getElementById("barreActions")
+export const nbSelectionnes = document.getElementById("nbSelectionnes")
+export const btnDesarchiver = document.getElementById("btnDesarchiver")
+export const archivesVides = document.getElementById("archivesVides")
+
+
+
+ 
