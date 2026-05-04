@@ -247,8 +247,19 @@ export function afficheRecherche(){
                     i.email .toLowerCase().includes(serachValue) ||
                     i.telephone .toLowerCase().includes(serachValue) ||
                     i.date .toLowerCase().includes(serachValue) ||
-                    i.formation .toLowerCase().includes(serachValue)
+                    i.formation .toLowerCase().includes(serachValue 
+                       
+                    )
                 )
     return result
 
+}
+
+export function filterFormation(nomFormation){
+    const allIns = getData()
+    if(nomFormation === ""){
+       return  allIns.filter(i => i.statue === true )
+    }
+        return allIns.filter(i => i.formation === nomFormation && i.statue === true)
+    
 }
