@@ -34,10 +34,53 @@
                     class="border border-rose-500 rounded-xl h-[30px] w-[30%]  outline-none focus:border-red-800 px-4 py-2 text-sm "
                     placeholder="🔍 rechercher..">
                     
+                      <!-- Notifications + Profil (droite) -->
+                    <div class="flex items-center gap-3">
+
+                        <!-- Cloche -->
+                        <div class="relative w-9 h-9 flex items-center justify-center rounded-lg bg-gray-50 border border-gray-200 cursor-pointer hover:bg-rose-50"
+                            id="btnCloche">
+                        <i class="fa-regular fa-bell text-gray-500 text-sm"></i>
+                        <span id="badgeNotif"
+                            class="absolute -top-1 -right-1 bg-red-600 text-white text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
+                            3
+                        </span>
+                        </div>
+
+                        <!-- Profil -->
+                        <div class="flex items-center gap-2 px-3 py-1 rounded-lg bg-gray-50 border border-gray-200 cursor-pointer hover:bg-rose-50"
+                            id="btnProfil">
+                        <div class="w-7 h-7 rounded-full bg-red-900 flex items-center justify-center text-white text-[10px] font-bold">AD</div>
+                        <div>
+                            <div class="text-xs font-semibold text-gray-800">Dr. Admin</div>
+                            <div class="text-[10px] text-gray-400">Super admin</div>
+                        </div>
+                        <i class="fa-solid fa-chevron-down text-gray-400 text-[10px]"></i>
+                        </div>
+
+                    </div>
+
+
                 </div>
-                <div class=" flex items-center justify-between w-full h-[50px] ">
+                <div class=" flex items-center justify-between w-full h-[50px]  ">
                     <h1 class="text-red-900 font-bold text-2xl">LISTE DES INSCRIPTIONS</h1>
                     <div class="flex gap-6 h-[40px] items-center justify-center">
+                    <div class="w-[50%] h-[100%] flex items-center justify-center  gap-3  " >
+                        <div class="block text-lg w-20 font-medium mb-1 flex gap-2 items-center justify-center text-red-900"><i class="fa-solid fa-filter"></i>Filtre :</div>
+                        <div class="w-[70%] h-[100%]">
+                            <select id="filtreFormation"
+                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-red-800 bg-white h-[100%]">
+                            <option value="">-- TOUTES --</option>
+
+                            <option value="devWeb-L1">Développement web - L1</option>
+                            <option value="devWeb-L2">Développement web - L2</option>
+                            <option value="devWeb-L3">Développement web - L3</option>
+                            <option value="GL-L1">Génie logiciel - L1</option>
+                            <option value="GL-L2">Génie logiciel - L2</option>
+                            <option value="data-L1">Développement data - L1</option>
+                            </select>
+                        </div>
+                    </div>
                         <button class="border border-red-900 font-medium rounded-xl w-[120px] h-[90%] hover:bg-red-900 hover:text-white"
                             id="btnAllArchives">
                             <i class="fa-solid fa-box-archive px-2"></i>
@@ -48,6 +91,7 @@
                             <i class="fa-solid fa-plus text-lg px-1"></i>
                         Ajouter
                         </button>
+                        
                     </div>
                 </div>
                 <div class="bg-white w-[100%] rounded-xl h-screen overflow-y-auto ">
@@ -154,7 +198,7 @@
                 <select id="selectFormation"
                 class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-red-800 bg-white">
                 <option value="">-- Choisir --</option>
-                <!-- TODO: charger depuis l'API -->
+
                 <option value="devWeb-L1">Développement web - L1</option>
                 <option value="devWeb-L2">Développement web - L2</option>
                 <option value="devWeb-L3">Développement web - L3</option>

@@ -16,13 +16,14 @@ import {
     barreActions,
    nbSelectionnes,
    btnDesarchiver,
-   rechercher 
+   rechercher,
+   filtreFormation
   
  } from "./dom/element.js"
 // import { btnAjouter } from "./dom/element.js"
 import { getData ,sauvegardeData} from "./store/taskStore.js"
 import { verifMail,verifTelephone,verifData,resetErrors,afficherErreurs,saisiInscription,ajoutInscription,afficheOneIns,afficheAllIns,rechargerFormulaire, modifInscript, archiveInscr,  afficheOneArchive,
-    afficheAllArchive,deArchiveInscr,afficheRecherche } from "./services/taskService.js"
+    afficheAllArchive,deArchiveInscr,afficheRecherche ,filterFormation} from "./services/taskService.js"
 import { afficherToast } from "./ui/messageRenderer.js"
 
 let idModifier = null
@@ -32,6 +33,8 @@ let idModifier = null
     resetErrors()        
     formAjout.reset()      
     idModifier = null
+   btnFormulaireAjout.textContent = "Créer l'inscription"
+    
  })
  
  btnFermerAjout.addEventListener("click",function(){
@@ -165,6 +168,29 @@ rechercher .addEventListener("input",function(){
         return
     }
    tab.forEach(t => {
+      if(t.statue === true){
+         afficheOneIns(t)
+      }
+   })
+})
+
+filtreFormation.addEventListener('change',function(){
+   let nomFormation = filtreFormation.value
+   let tabFiltre = filterFormation(nomFormation)
+
+   listeInscription.innerHTML = ""
+
+   // console.log(tab)
+   if (tabFiltre.length === 0) {
+        listeInscription.innerHTML = `
+            <tr>
+                <td colspan="7" class="text-center py-5 text-gray-400">
+                    Aucun résultat trouvé
+                </td>
+            </tr>`
+        return
+    }
+   tabFiltre.forEach(t => {
       if(t.statue === true){
          afficheOneIns(t)
       }
